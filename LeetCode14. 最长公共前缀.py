@@ -12,4 +12,7 @@
 
 def longestCommonPrefix(self, strs: List[str]) -> str:
     for i in range(len(strs[0])):
-        strs[0:i]
+        comm = strs[0:i]
+        for j in strs[1:]:
+            if comm in j:
+                return i
