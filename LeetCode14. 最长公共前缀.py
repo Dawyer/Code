@@ -14,17 +14,16 @@ def longestCommonPrefix(strs):
     longestCommon = ''
     for i in range(len(strs[0])):
         comm = strs[0][0:i+1]
-        print('comm:{}'.format(comm))
+        count = 0
         for j in strs[1:]:
-            count = 1
             print('j:{}'.format(j))
             if comm in j:
-                print('ok')
                 count += 1
-                if count < len(strs)-1:
-                    continue
-                else:
+                if count == (len(strs)-1):
                     longestCommon = comm
+        else:
+            if comm not in j:
+                break
     return longestCommon
 
 print(longestCommonPrefix(["flower","flow","flight"]))
