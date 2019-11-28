@@ -10,11 +10,21 @@
 # 说明:
 # 所有输入只包含小写字母 a-z 。
 
-def longestCommonPrefix(self, *strs):
+def longestCommonPrefix(strs):
+    longestCommon = ''
     for i in range(len(strs[0])):
-        comm = strs[0:i]
+        comm = strs[0][0:i+1]
+        print('comm:{}'.format(comm))
         for j in strs[1:]:
+            count = 1
+            print('j:{}'.format(j))
             if comm in j:
-                return i
+                print('ok')
+                count += 1
+                if count < len(strs)-1:
+                    continue
+                else:
+                    longestCommon = comm
+    return longestCommon
 
-longestCommonPrefix(["flower","flow","flight"])
+print(longestCommonPrefix(["flower","flow","flight"]))
