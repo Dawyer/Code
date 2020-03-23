@@ -19,9 +19,90 @@
 
 
 class ListNode:
-    def __init__(self, x):
-        self.val = x
+    def __init__(self, data):
+        self.data = data
         self.next = None
+
+    def getData(self):
+        return self.data
+
+    def getNext(self):
+        return self.next
+
+    def setData(self,newdata):
+        self.data = newdata
+
+    def setNext(self,newnext):
+        self.next = newnext
+
+class MysingleLinkList():
+    def __init__(self):
+        self.head = None
+
+    def isEmpty(self):
+        return self.head == None
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count += 1
+            current = current.getNext()
+        return count
+
+    def add(self, val):
+        temp = ListNode(val)
+        temp.next = self.head
+        self.head = temp
+
+    def search(self, item):
+        current = self.head
+        found = False
+        while current != None and not found:
+            if current.getData() == item:
+                fount = True
+            else:
+                current = current.getNext()
+        return found
+
+    def remove(self,item):
+        current = self.head
+        previous = None
+        found = False
+        if not self.search(item):
+            return
+
+        while not found:
+            if current.getData() == item:
+                found = True
+            else:
+                previous = current
+                current = current.getNext()
+
+        if previous == None:
+            self.head = current.getNext()
+        else:
+            previous.setNext(current.getNext())
+
+    def getAllData(self):
+        data = []
+        current = self.head
+        while current:
+            data.append(current.getData())
+            current = current.getNext()
+        return data
+
+linkList=MysingleLinkList()
+for i in range(10,50,5):
+    linkList.add(i)
+print(linkList.size())
+print(linkList.getAllData())
+linkList.remove(25)
+print(linkList.getAllData())
+linkList.search(25)
+linkList.isEmpty()
+
+
 
 # def middleNode(head):
 #     A = [head]
