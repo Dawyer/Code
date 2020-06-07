@@ -18,31 +18,36 @@
 # 0 <= matrix[i].length <= 100
 
 
-class Solution:
+class Solution1:
     def spiralOrder(self, matrix):
         if not matrix or not matrix[0]:
             return matrix
-
         rows, columns = len(matrix), len(matrix[0])
         visited = [[False] * columns for _ in range(rows)]
-        #visited=[[False, False, False], [False, False, False], [False, False, False]]
         total = rows * columns
         order = [0] * total
-
-        directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
-        row, column = 0, 0
+        direction = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+        row = 0
+        column = 0
         directionIndex = 0
 
         for i in range(total):
             order[i] = matrix[row][column]
             visited[row][column] = True
-            nextRow, nextColumn = row + directions[directionIndex][0], column + directions[directionIndex][1]
-            if not (0 <= nextRow < rows and 0 <= nextColumn < columns and not visited[nextRow][nextColumn]):
-                directionIndex = (directionIndex + 1) % 4
-            row += directions[directionIndex][0]
-            column += directions[directionIndex][1]
+            row_next = row + direction[directionIndex][0]
+            column_next = column + direction[directionIndex][1]
+
+            if not (0 <= row_next < rows and 0 <= column_next < columns and not visited[row_next][column_next]):
+                directionIndex = (directionIndex+1) % 4
+
+            row = row + direction[directionIndex][0]
+            column = column + direction[directionIndex][1]
+
         return order
 
+
 matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-solution_1 = Solution()
-print(solution_1.spiralOrder(matrix))
+matrix2 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+solution_1 = Solution1()
+solution_2 = Solution1()
+print(solution_1.spiralOrder(matrix),solution_2.spiralOrder(matrix2))
