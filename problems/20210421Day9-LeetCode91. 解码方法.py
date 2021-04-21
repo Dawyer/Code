@@ -20,7 +20,7 @@ def numDecoding(s):
     for i in range(1,n+1):
         if s[i - 1] != '0':
             f[i] += f[i - 1]
-        if i > 1 and s[i-2] != '0':
+        if i > 1 and s[i-2] != '0' and int(s[i-2:i]) <= 26:
             f[i] += f[i-2]
     return f[n]
 
