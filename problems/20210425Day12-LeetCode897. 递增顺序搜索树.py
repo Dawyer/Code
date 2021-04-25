@@ -31,7 +31,6 @@ class Solution:
             cur = cur.right
         return dummy.right
 
-
     def InorderTraversal(self,root):
         if not root:
             return
