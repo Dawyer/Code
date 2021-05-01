@@ -10,7 +10,6 @@ class Solution():
         self.df(n)
         return self.res
 
-
     def df(self, n):
         if n < self.res:
             self.res -= 1
@@ -20,6 +19,7 @@ class Solution():
             self.res += 1
             self.df(n)
 
-n=Solution()
+
+n = Solution()
 print(n.arrangeCoins(5))
 print(n.arrangeCoins(8))
