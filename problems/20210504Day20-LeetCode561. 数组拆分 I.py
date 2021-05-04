@@ -16,7 +16,7 @@
 # 解释：最优的分法为 (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9
 from typing import List
 
-
+# 找规律，将组数排序，奇数位的相加为最大值
 def arrayPairSum(nums: List[int]) -> int:
     return sum(sorted(nums)[::2])
 
