@@ -31,7 +31,6 @@ def findMaximumXOR(nums: List[int]) -> int:
             # 如果只想保留从最高位开始到第 k 个二进制位为止的部分
             # 只需将其右移 k 位
             seen.add(num >> k)
-            print(seen,k,num)
 
         # 目前 x 包含从最高位开始到第 k+1 个二进制位为止的部分
         # 我们将 x 的第 k 个二进制位置为 1，即为 x = x*2+1
