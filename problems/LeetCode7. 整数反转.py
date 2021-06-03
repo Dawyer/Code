@@ -12,4 +12,4 @@ class Solution:
             return y
 
 a=Solution()
-print(a.reverse(12345667))
+print(a.reverse(1534236469))
