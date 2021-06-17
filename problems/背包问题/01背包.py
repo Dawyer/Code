@@ -15,14 +15,22 @@ class solution:
         # dp = [[0 for j in range(V + 1)] for i in range(N + 1)]
         dp = [[0] * (V+1) for i in range(N+1)]
         for i in range(1, N+1):  # i取1到N
-            for j in range(1, V+1):  # j取1到V
+            for j in range(V+1):  # j取到V
                 dp[i][j] = dp[i - 1][j]  # 不选第i个
                 if j >= v[i-1]:  # 选第i个
                     dp[i][j] = max(dp[i][j], dp[i - 1][j - v[i-1]] + w[i-1])
         print(dp)
         return dp[-1][-1]
 
+    def max_value_1(self, N: int, V: int, v: List[int], w: List[int]):
+        dp = [0 for i in range(V + 1)]
+        for i in range(1, N + 1):
+            for j in range(V, v[i-1]-1, -1):
+                dp[j] = max(dp[j], dp[j - v[i-1]] + w[i-1])
+        return dp[-1]
+
 
 if __name__ == '__main__':
     s = solution()
     print(s.max_value(4, 5, [1, 2, 3, 4], [2, 4, 4, 5]))
+    print(s.max_value_1(4, 5, [1, 2, 3, 4], [2, 4, 4, 5]))
