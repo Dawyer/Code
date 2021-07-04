@@ -1,20 +1,33 @@
+import functools
+class Solution:
+    """
+    @param num: An integer
+    @return: an integer array
+    """
+    def primeFactorization(self, num):
+        # write your code here
+        res = []
+        if isA(num):
+            return [num]
+        else:
+            while num != 1:
+                for i in range(2, num+1):
+                    if isA(i) and num % i == 0:
+                        res.append(i)
+                        num = num // i
+                        break
+        return res
 
+@functools.lru_cache
+def isA(num):
+    if num == 2:
+        return True
+    else:
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
 
-def fun1(fun):
-    def fun2(*args,**kwargs):
-        print('start')
-        return_fun = fun(*args,**kwargs)
-        print('end')
-        return return_fun
-    return fun2
-
-
-@fun1
-def fun(arg1):
-    print('开始')
-    print(arg1)
-    print('结束')
-    return '完成'
-
-
-fun([1,2,3])
+if __name__ == '__main__':
+    s = Solution()
+    print(s.primeFactorization(100891891))
